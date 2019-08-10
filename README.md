@@ -13,7 +13,7 @@ support as well before the final version of iOS 13.0 is released, so this librar
 First make sure you import the `BetterSheet` package and  initialize `UIHostingController` with power 
 sheet support in  `SceneDelegate.swift`:
 
-```swift
+```
 window.rootViewController = UIHostingController.withBetterSheetSupport(rootView: ContentView())
 ```
 

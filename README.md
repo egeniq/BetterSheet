@@ -1,7 +1,7 @@
 # BetterSheet
 
 Provides a powerful SwiftUI sheet replacement with the following features:
-* All the features of the built-in `sheet` modifiers, but more robust (tested against Xcode 11.0 beta 5).
+* All the features of the built-in `sheet` modifiers, but more robust (tested against Xcode 11.0 beta 6).
 * Modal support (prevent the user from swiping to dismiss), similar to UIKit's [`modalInPresentation`](https://developer.apple.com/documentation/uikit/uiviewcontroller/3229894-modalinpresentation?language=objc))
 * Support for invoking an action when the user tries to dismiss the sheet when it is modal.
 
@@ -81,7 +81,7 @@ struct DetailView: View {
     @Environment(\.betterSheetPresentationMode) var presentationMode
     
     var body: some View {
-        Button(action: { self.presentationMode.value.dismiss() }) {
+        Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
             Text("Dismiss")
         }
     }    
@@ -197,11 +197,11 @@ struct EditView: View {
             fruits.append(fruit)
         }
         
-        presentationMode.value.dismiss()
+        presentationMode.wrappedValue.dismiss()
     }
     
     func cancel() {
-        presentationMode.value.dismiss()
+        presentationMode.wrappedValue.dismiss()
     }
 }
 

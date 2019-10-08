@@ -1,0 +1,6 @@
+framework module BetterSheet {
+  umbrella header "BetterSheet-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,16 @@
+PODS:
+  - BetterSheet (1.0.0)
+
+DEPENDENCIES:
+  - BetterSheet (from `../`)
+
+EXTERNAL SOURCES:
+  BetterSheet:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  BetterSheet: 60937525546b7eb0565f09de9e4a3274a39ed4cd
+
+PODFILE CHECKSUM: 2dfdfa994c18ad8e4faf9142a225664dc5c3df3f
+
+COCOAPODS: 1.7.5

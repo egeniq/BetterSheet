@@ -28,6 +28,7 @@ struct BasicUsage: View {
                 Text("Show Detail")
             }
         }
+            .navigationBarTitle("Basic Usage")
             .betterSheet(isPresented: $showDetail) {
                 Text("Detail!")
             }
@@ -44,6 +45,7 @@ struct SimpleUsage: View {
                 Text(fruit.name)
             }
         }
+            .navigationBarTitle("Simple Usage With List")
             .betterSheet(item: $selectedFruit) { fruit in
                 Text("You selected \(fruit.name)")
             }
@@ -108,11 +110,11 @@ struct EditView: View {
                         ]
                     )
                 }
-                .betterSheetIsModalInPresentation(isModified)
-                .onBetterSheetDidAttemptToDismiss {
-                    self.showDismissActions = true
-                }
         }
+            .betterSheetIsModalInPresentation(isModified)
+            .onBetterSheetDidAttemptToDismiss {
+                self.showDismissActions = true
+            }
     }
 
     func save() {
@@ -142,26 +144,24 @@ struct AdvancedUsage: View {
     @State var editFruit: Fruit? = nil
 
     var body: some View {
-        NavigationView {
-            List(fruits) { fruit in
-                Text(fruit.name)
-                Spacer()
-                Button(action: { self.editFruit = fruit }) {
-                    Image(systemName: "pencil.circle")
-                }
+        List(fruits) { fruit in
+            Text(fruit.name)
+            Spacer()
+            Button(action: { self.editFruit = fruit }) {
+                Image(systemName: "pencil.circle")
             }
-                .listStyle(GroupedListStyle())
-                .navigationBarTitle("Fruits")
-                .navigationBarItems(
-                    leading: Button(action: { self.addFruit = true }) { Text("Add") }
-                )
-                .betterSheet(isPresented: $addFruit) {
-                    EditView(fruits: self.$fruits)
-                }
-                .betterSheet(item: $editFruit) { fruit in
-                    EditView(fruits: self.$fruits, fruit: fruit)
-                }
         }
+            .listStyle(GroupedListStyle())
+            .navigationBarTitle("Fruits")
+            .navigationBarItems(
+                trailing: Button(action: { self.addFruit = true }) { Text("Add") }
+            )
+            .betterSheet(isPresented: $addFruit) {
+                EditView(fruits: self.$fruits)
+            }
+            .betterSheet(item: $editFruit) { fruit in
+                EditView(fruits: self.$fruits, fruit: fruit)
+            }
     }
 }
 
@@ -170,15 +170,16 @@ struct ContentView: View {
         NavigationView {
             List {
                 NavigationLink(destination: BasicUsage()) {
-                    Text("Basic Usage").navigationBarTitle("Basic Usage")
+                    Text("Basic Usage")
                 }
                 NavigationLink(destination: SimpleUsage()) {
-                    Text("Simple Usage").navigationBarTitle("Simple Usage with List")
+                    Text("Simple Usage")
                 }
                 NavigationLink(destination: AdvancedUsage()) {
-                    Text("Avanced Usage").navigationBarTitle("Advanced Usage with List")
+                    Text("Avanced Usage")
                 }
             }
+                .navigationBarTitle("BetterSheet Example")
         }
     }
 }
